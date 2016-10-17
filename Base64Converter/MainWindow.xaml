@@ -1,0 +1,18 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Base64Converter"
+        xmlns:Win32="clr-namespace:Microsoft.Win32;assembly=PresentationFramework" x:Class="Base64Converter.MainWindow"
+        mc:Ignorable="d"
+        Title="Base64Converter" Height="350" Width="525">
+    <Grid Background="AliceBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="268*"/>
+        </Grid.RowDefinitions>
+        <Button ClickMode="Press" Click="FromFileToBase64" Name="OpnFileToBase" Margin="60,97,357,129" Grid.Row="1">File to Base64</Button>
+        <Button ClickMode="Press" Click="FromBase64ToFile" Name="OpenBase64ToFile" Margin="358,97,60,129" Grid.Row="1">Base64 to file</Button>
+    </Grid>
+</Window>
