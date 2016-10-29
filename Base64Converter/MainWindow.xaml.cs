@@ -50,15 +50,14 @@ namespace Base64Converter
             {
                 try
                 {
-                    //@Todo poprawka
+                    //To decode file to prevorious state, it is needed to keep somewhere filename(here that is not implemented)
                     var parseToFile = Convert.FromBase64String(File.ReadAllText(openFile.FileName));
-                    FileStream stream = null;
-                    using (var writer = new BinaryWriter(stream))
+                    if (saveFile.ShowDialog() == true)
                     {
-                        writer.Write(parseToFile);
+                        File.WriteAllBytes(saveFile.FileName, parseToFile);
                     }
-                    File.WriteAllBytes("c:\\" + stream.Name, parseToFile);
-                    MessageBox.Show("Encoding was successful");
+
+                    MessageBox.Show("Decoding was successful");
                 }
                 catch (FileLoadException ex)
                 {
