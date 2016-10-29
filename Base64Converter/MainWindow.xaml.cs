@@ -18,14 +18,20 @@ namespace Base64Converter
         private void FromFileToBase64(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            SaveFileDialog saveFile = new SaveFileDialog();
+
             if (openFile.ShowDialog() == true)
             {
                 try
                 {
                     var parseTo64 = Convert.ToBase64String(File.ReadAllBytes(openFile.FileName));
-                    StreamWriter file = new StreamWriter("c:\\test.txt");
-                    file.WriteLine(parseTo64);
-                    file.Close();
+                    if (saveFile.ShowDialog() == true)
+                    {
+                        StreamWriter file = new StreamWriter(saveFile.FileName);
+                        file.WriteLine(parseTo64);
+                        file.Close();
+                    }
+
                     MessageBox.Show("Encoding was successful");
                 }
                 catch (FileLoadException ex)
@@ -38,6 +44,8 @@ namespace Base64Converter
         private void FromBase64ToFile(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            SaveFileDialog saveFile = new SaveFileDialog();
+
             if (openFile.ShowDialog() == true)
             {
                 try
