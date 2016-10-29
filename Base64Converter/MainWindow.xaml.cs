@@ -25,8 +25,10 @@ namespace Base64Converter
                 try
                 {
                     var parseTo64 = Convert.ToBase64String(File.ReadAllBytes(openFile.FileName));
+                    saveFile.DefaultExt = ".txt";
                     if (saveFile.ShowDialog() == true)
                     {
+                        if (saveFile.FileName == string.Empty) throw new FileLoadException();
                         StreamWriter file = new StreamWriter(saveFile.FileName);
                         file.WriteLine(parseTo64);
                         file.Close();
