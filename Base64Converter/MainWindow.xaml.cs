@@ -20,12 +20,15 @@ namespace Base64Converter
             OpenFileDialog openFile = new OpenFileDialog();
             SaveFileDialog saveFile = new SaveFileDialog();
 
+            saveFile.Filter = "Data Files (*.txt)|*.txt";
+            saveFile.DefaultExt = "txt";
+            saveFile.AddExtension = true;
+
             if (openFile.ShowDialog() == true)
             {
                 try
                 {
                     var parseTo64 = Convert.ToBase64String(File.ReadAllBytes(openFile.FileName));
-                    saveFile.DefaultExt = ".txt";
                     if (saveFile.ShowDialog() == true)
                     {
                         if (saveFile.FileName == string.Empty) throw new FileLoadException();
